@@ -41,9 +41,21 @@ class Counter extends React.Component {
                 <button onClick={this.handleReset}>reset</button>
             </div>
         );
-    } 
+    }
+    
+    componentDidMount() {
+        const json = localStorage.getItem('count');
+        const count = parseInt(json, 10);
+      
+        if(!isNaN(count)) {
+            this.setState(() => ({ count })); 
+        }
+      }
+      componentDidUpdate(prevProps, prevState) {
+        if(prevState.count !== this.state.count) {
+            localStorage.setItem('count', this.state.count);
+        }
+    }
 }
-
-
 
 ReactDOM.render(<Counter />, document.getElementById('app'));
