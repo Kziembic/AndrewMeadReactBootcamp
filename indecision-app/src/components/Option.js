@@ -1,7 +1,6 @@
 import React from 'react';
 
-export const Option = props => {
-    return (
+export const Option = props => (
       <div>
         {props.optionText}
         <button 
@@ -12,5 +11,4 @@ export const Option = props => {
         Remove
         </button>
       </div>
-      );
-  };
+  );
